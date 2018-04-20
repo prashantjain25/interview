@@ -25,11 +25,11 @@ public class LongestCommonSubsequence {
         for(int i=1; i < temp.length; i++){
             for(int j=1; j < temp[i].length; j++){
                 if(str1[i-1] == str2[j-1]) {
-                    temp[i][j] = temp[i - 1][j - 1] + 1;
+                    temp[i][j] = temp[i - 1][j - 1] + 1; //if char. are same 1+topLeft val.
                 }
                 else
                 {
-                    temp[i][j] = Math.max(temp[i][j-1],temp[i-1][j]);
+                    temp[i][j] = Math.max(temp[i][j-1],temp[i-1][j]); //else max(left, top)
                 }
                 if(temp[i][j] > max){
                     max = temp[i][j];
