@@ -28,7 +28,7 @@ public class LongestIncreasingSubsequence {
      * DP way of solving LIS
      */
     public int longestSubsequenceWithActualSolution(int arr[]){
-        System.out.println(System.currentTimeMillis() );
+        //System.out.println(System.currentTimeMillis() );
         int T[] = new int[arr.length];
         int actualSolution[] = new int[arr.length];
         for(int i=0; i < arr.length; i++){
@@ -39,7 +39,7 @@ public class LongestIncreasingSubsequence {
         for(int i=1; i < arr.length; i++){
             for(int j=0; j < i; j++){
                 if(arr[i] > arr[j]){
-                    if(T[j] + 1 > T[i]){
+                    if(T[j] + 1 > T[i]){ //this is for sequence comparision
                         //this array is for largest value position
                         T[i] = T[j] + 1;
                         //*this array has location key for all the  indexes involved in LIs chain
@@ -60,6 +60,7 @@ public class LongestIncreasingSubsequence {
         //lets print the actual solution
         int t = maxIndex;
         int newT = maxIndex;
+        //T[maxIndex] tells you about the maximum length obtained and maxIndex tells you about the lastIndex of this length 
         do{
             t = newT;
             System.out.print(arr[t] + " ");
@@ -74,7 +75,7 @@ public class LongestIncreasingSubsequence {
             System.out.print(" "+x);
         }
         System.out.println();
-        System.out.println(System.currentTimeMillis() );
+        //System.out.println(System.currentTimeMillis() );
         return T[maxIndex];
     }
     
@@ -82,7 +83,7 @@ public class LongestIncreasingSubsequence {
      * Recursive way of solving LIS
      */
     public int longestSubsequenceRecursive(int arr[]){
-        System.out.println(System.currentTimeMillis() );
+      //  System.out.println(System.currentTimeMillis() );
         int maxLen = 0;
         for(int i=0; i < arr.length-1; i++){
             int len = longestSubsequenceRecursive(arr,i+1,arr[i]);
@@ -90,7 +91,7 @@ public class LongestIncreasingSubsequence {
                 maxLen = len;
             }
         }
-        System.out.println(System.currentTimeMillis() );
+        //System.out.println(System.currentTimeMillis() );
         return maxLen + 1;
         
     }
@@ -99,15 +100,11 @@ public class LongestIncreasingSubsequence {
         if(pos == arr.length){
             return 0;
         }
-        
-        
         int t1 = 0;
         if(arr[pos] > lastNum){
             t1 = 1 + longestSubsequenceRecursive(arr, pos+1, arr[pos]);
         }
         int t2 = longestSubsequenceRecursive(arr, pos+1, lastNum);
-        
-
         return Math.max(t1, t2);
     }
     

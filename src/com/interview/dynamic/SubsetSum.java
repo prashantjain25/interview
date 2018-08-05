@@ -24,7 +24,7 @@ public class SubsetSum {
         for (int i = 1; i <= input.length; i++) {
             for (int j = 1; j <= total; j++) {
                 if (j - input[i - 1] >= 0) {
-                    T[i][j] = T[i - 1][j] || T[i - 1][j - input[i - 1]];
+                    T[i][j] = T[i-1][j] || T[i-1][j-input[i-1]];
                 } else {
                     T[i][j] = T[i-1][j];
                 }
@@ -67,8 +67,8 @@ public class SubsetSum {
         int arr[] = {1, 3, 5, 5, 2, 1, 1, 6};
         System.out.println(ss.partition(arr));
 
-        int arr1[] = {2, 3, 7, 8};
-        System.out.print(ss.subsetSum(arr1, 11));
+        int arr1[] = {1, 3, 9, 2};
+        System.out.print(ss.subsetSum(arr1, 5));
 
     }
 }

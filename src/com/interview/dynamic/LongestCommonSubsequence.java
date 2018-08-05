@@ -1,5 +1,8 @@
 package com.interview.dynamic;
 
+import java.util.Collections;
+import java.util.stream.Stream;
+
 /**
  http://www.geeksforgeeks.org/dynamic-programming-set-4-longest-common-subsequence/
  */
@@ -18,7 +21,7 @@ public class LongestCommonSubsequence {
         }
     }
 
-    public int lcsDynamic(char str1[],char str2[]){
+    public int lcsDynamic(int str1[],int str2[]){
     
         int temp[][] = new int[str1.length + 1][str2.length + 1];
         int max = 0;
@@ -42,10 +45,10 @@ public class LongestCommonSubsequence {
     
     public static void main(String args[]){
         LongestCommonSubsequence lcs = new LongestCommonSubsequence();
-        String str1 = "ABCDGHLQR";
-        String str2 = "AEDPHR";
+        String str1 = "156";
+        String str2 = "1376";
         
-        int result = lcs.lcsDynamic(str1.toCharArray(), str2.toCharArray());
+        int result = lcs.lcsDynamic(Stream.of(str1.split("\\d+")).mapToInt(Integer::parseInt).toArray(), Stream.of(str2).mapToInt(Integer::parseInt).toArray());
         System.out.print(result);
     }
     

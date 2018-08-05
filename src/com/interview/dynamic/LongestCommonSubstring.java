@@ -17,7 +17,7 @@ public class LongestCommonSubstring {
                 if(str1[i-1] == str2[j-1]){
                     T[i][j] = T[i-1][j-1] +1;
                     if(max < T[i][j]){
-                        max = T[i][j];
+                        max = T[i][j];  
                     }
                 }
             }

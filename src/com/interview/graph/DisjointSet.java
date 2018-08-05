@@ -81,7 +81,7 @@ public class DisjointSet {
      * compression as well.
      */
     private Node findSet(Node node) {
-        Node parent = node.parent;
+        Node parent = node.parent; //a point where it finds itself as a super parent
         if (parent == node) {
             return parent;
         }
